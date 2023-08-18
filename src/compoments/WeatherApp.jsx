@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 const WeatherApp = () => {
-  const [city, setcity] = useState("");
+  const [city, setcity] = useState(null);
   const [details, setdetails] = useState(null);
   
   useEffect(()=>{
@@ -52,14 +52,18 @@ const WeatherApp = () => {
 
 <div className="city ">
   {/* <div>icon</div> */}
-  <h2 className=""> {details.name} {details.sys.country} </h2>
-  <h3>  {details.weather.description}   </h3>
+  <h2 > {details.name} {details.sys.country} </h2>
+ 
 </div>
 <div className="weathertype">
+  <h2>WEATHER DETAILS</h2>
+  <div className="centered-content">
+    <h3>Temp:{details.main.temp- 273}°C</h3>
+    <h6>MIN|{details.main.temp_min- 273}°C <br /> MAX| {details.main.temp_max- 273}°C</h6>
+    <h4>FeelLike: {details.main.feels_like- 273}°C</h4>
+    <h3> Wind Speed: {details.wind.speed}   </h3>
 
-  <h2>TEMPERATURE</h2>
-  <h4>{details.main.temp}</h4>
-  <h6>MIN|{details.main.temp_min}  MAX| {details.main.temp_max} </h6>
+  </div>
 </div>
   </>
 )
